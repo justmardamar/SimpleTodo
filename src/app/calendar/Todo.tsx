@@ -1,13 +1,13 @@
 import { supabaseClient } from "@/lib/supabaseClient"
 import { useState,useEffect } from "react"
-import { Todos } from "@/types/Todos"
+import { TodosCreate } from "@/types/Todos"
 import { useSessionUser } from "@/lib/useSessionUser"
 
 export default function Todo(props : {inputdate : Date}) {
 
     const {session} = useSessionUser()
 
-    const [data,setData] = useState<Todos>({title : '',notes : '',priorites : '', deadline : props.inputdate,email_user : "",status:"incomplete",done_at:null})
+    const [data,setData] = useState<TodosCreate>({title : '',notes : '',priorities_id : '', deadline : props.inputdate.toISOString(),email_user : "",status:"incomplete",done_at:null})
     
     useEffect(() => {
       if (!session?.user.email) return 
@@ -25,7 +25,7 @@ export default function Todo(props : {inputdate : Date}) {
         if(error){
             console.log(error)
         }
-        setData({title : '',notes:'',priorites:'',deadline:props.inputdate,email_user: "",status:"incomplete",done_at:null})
+        setData({title : '',notes:'',priorities_id:'',deadline:props.inputdate.toISOString(),email_user: "",status:"incomplete",done_at:null})
     }
 
     return (

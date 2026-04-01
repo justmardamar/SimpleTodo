@@ -1,6 +1,5 @@
 import { supabaseClient } from "@/lib/supabaseClient"
 import { useEffect, useState } from "react"
-import ReplysComments from "../../../../components/comments/ReplysComments"
 import { getCommentsTodos } from "@/lib/comment/getComments"
 import SetActionComment from "@/components/comments/SetActionComment"
 

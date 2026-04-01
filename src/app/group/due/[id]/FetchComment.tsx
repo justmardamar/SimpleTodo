@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react'
-import { Comments } from '@/types/Todos'
 import { supabaseClient } from '@/lib/supabaseClient'
 import { getCommentsTodos } from '@/lib/comment/getComments'
 import SetActionComment from '@/components/comments/SetActionComment'
 import StartComment from '@/components/comments/StartComment'
 
 export default function FetchComment({ todoId }: { todoId: number }) {
-    const [comments, setComments] = useState<Comments[]>([])
+    const [comments, setComments] = useState<any[]>([])
     const [show, setShow] = useState<boolean>(false)
     const [count, setCount] = useState<number>(0)
 

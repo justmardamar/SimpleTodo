@@ -50,8 +50,8 @@ export default function page() {
                     <input type="text" placeholder="Email User" name="email" className="input-add" onChange={(e) => setEmail(e.target.value)} />
                     <select name="role" className="input-add" onChange={(e) => setRole(e.target.value)}>
                         <option value="">None</option>
-                        <option value="admin">Admin</option>
-                        <option value="member">Member</option>
+                        <option value="2">Admin</option>
+                        <option value="3">Member</option>
                     </select>
                     <button type="submit" className="btn btn-primary">Tambahkan</button>
                 </form>

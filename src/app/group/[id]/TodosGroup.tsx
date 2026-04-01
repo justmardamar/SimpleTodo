@@ -1,12 +1,10 @@
 "use client"
-import { supabaseClient } from "@/lib/supabaseClient"
 import { useParams } from "next/navigation"
 import { useState, useEffect } from "react"
-import { Todos } from "@/types/Todos"
-import Link from "next/link"
 import { useRoleUserGroup } from "@/lib/users/useRoleUserGroup"
 import SearchInput from "@/components/SearchInput"
 import { TodosRole } from "@/lib/todos/TodosRole"
+import Link from "next/link"
 
 export default function TodosGroup() {
     const { id } = useParams<{ id: string }>()

@@ -1,5 +1,4 @@
 export default function page() {
-  https://github.com/justmardamar/SimpleTodo
   return (
     <div className='about'>
         <h1>About</h1>

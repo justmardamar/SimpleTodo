@@ -12,7 +12,7 @@ export interface fetchMember {
     role_group: {
         id: string,
         name: string
-    }[]
+    }| null
 }
 
 export interface fetchJoinGroup {

@@ -10,6 +10,16 @@ export interface Todos {
     }[]
 }
 
+export interface TodosCreate {
+    title: string,
+    notes: string,
+    priorities_id: string,
+    deadline: string,
+    email_user: string,
+    status: string,
+    done_at: string | null
+}
+
 export interface TodosCalendar {
     id: string,
     title: string,
@@ -43,5 +53,5 @@ export interface Comments {
     user_profiles: {
         id: string,
         email_user: string
-    }[]
+    }
 }

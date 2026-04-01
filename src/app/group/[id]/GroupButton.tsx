@@ -8,18 +8,26 @@ export default function GroupButton({ id_member, group_id }: { id_member: string
     
     const editRole = async (e : any) => {
         e.preventDefault()
-        console.log(role)
-        console.log(group_id)
-        console.log(id_member)
+
+        if (!role) {
+            alert("Mohon pilih role terlebih dahulu")
+            return
+        }
+
         const { error } = await supabaseClient.from("group_member")
-            .update({ role_id: role })
+            .update({ role_id: Number(role) })
             .eq("group_id", group_id)
             .eq("id_user", id_member)
     
         if (error) {
             console.log(error)
+            alert("Gagal mengupdate role")
             return
         }
+
+        alert("Role berhasil diupdate")
+        setShowInput(false)
+        window.location.reload()
     }
 
     return (

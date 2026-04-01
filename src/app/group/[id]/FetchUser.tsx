@@ -1,5 +1,4 @@
 "use client"
-import { supabaseClient } from "@/lib/supabaseClient"
 import { useParams } from "next/navigation"
 import { useEffect, useState } from "react"
 import { fetchMember } from "@/types/fetchGroupCtreated"
@@ -10,16 +9,12 @@ import { FetchUserGroup } from "@/lib/users/FetchUser"
 
 export default function FetchUser() {
     const { id } = useParams<{ id: string }>()
-    const [members, setMembers] = useState<fetchMember[]>([])
+    const [members, setMembers] = useState<fetchMember[] | any[]>([])
     const { role } = useRoleUserGroup(id)
     const { session } = useSessionUser()
 
     const fetchUser = async () => {
         const data = await FetchUserGroup({id_group:id})
-        if (data) {
-            console.log(data)
-            return
-        }
         setMembers(data)
     }
 
@@ -33,7 +28,7 @@ export default function FetchUser() {
                 {members.map((member) => (
                     <li key={member.id}>
                         <h5>{member.email_user}</h5>
-                        <p>Role : {member.role_group.name}</p>
+                        <p>Role : {member.role_group?.name}</p>
                         {role == 1 ? 
                             (session?.user.id != member.id_user ? (
                                 <GroupButton group_id={id} id_member={member.id_user} />
