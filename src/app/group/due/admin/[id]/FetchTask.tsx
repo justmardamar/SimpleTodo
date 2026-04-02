@@ -1,10 +1,10 @@
 "use client"
-import { supabaseClient } from "@/lib/supabaseClient"
 import { useParams } from "next/navigation"
 import { useEffect, useState } from "react"
 import { FileObject } from "@supabase/storage-js"
 import DownloadFile from "./DownloadFile"
 import CompleteStatus from "@/components/due/CompleteStatus"
+import { FetchStorage } from "@/lib/todos/FetchStorage"
 
 interface fileWithUrl extends FileObject {
     signedUrl: string
@@ -15,28 +15,11 @@ export default function FetchTask() {
     const [files, setFiles] = useState<fileWithUrl[]>([])
 
     const fetchTask = async () => {
-        const { data, error } = await supabaseClient.storage.from("todos_file")
-            .list(`Todos/${id}`)
-
-        if (error) {
-            console.log(error)
+        const FileStorage = await FetchStorage({id_todos:id})
+        if (!FileStorage) {
             return
         }
-
-        const signedFiles = await Promise.all(
-            data.map(async (file) => {
-                const { data: signed } = await supabaseClient.storage
-                    .from("todos_file")
-                    .createSignedUrl(`Todos/${id}/${file.name}`, 60)
-
-                return {
-                    ...file,
-                    signedUrl: signed?.signedUrl || ""
-                }
-            })
-        )
-
-        setFiles(signedFiles)
+        setFiles(FileStorage)
     }
 
     useEffect(() => {

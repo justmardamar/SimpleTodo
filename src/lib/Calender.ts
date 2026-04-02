@@ -3,7 +3,8 @@ import { useCallback, useMemo, useState } from "react"
 function detectLocaleFirtsDay(locale:string ) {
     try{
         const loc = new Intl.Locale(locale)
-        if (loc.weekInfo?.firstDay){
+        const weekInfo = (loc as any).weekInfo
+        if (weekInfo?.firstDay){
             const index = weekInfo.firstDay % 7
             return index
         }
