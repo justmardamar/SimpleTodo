@@ -11,8 +11,9 @@ export default function DeleteComment({commentId}: {commentId: number}) {
             console.log(error)
             return
         }
+        window.location.reload()
     }
     return (
-        <button onClick={handleDelete} className="button" id="button-delete">Delete</button>
+        <button onClick={handleDelete} className="btn btn-danger" id="button-delete">Delete</button>
     )
 }

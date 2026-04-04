@@ -40,7 +40,6 @@ export default function FetchGroup() {
                                 <Link href={`/group/member/${group.group_id}?group_name=${group.groups.name}`} className="btn btn-secondary btn-sm">Add Members</Link>
                             )}
                             <Link href={`/group/todos/${group.group_id}`} className="btn btn-outline btn-sm">Create Todos</Link>
-                            <Link href={`/group/chat/${group.group_id}`} className="btn btn-outline btn-sm">Chat</Link>
                         </div>
                     </li>
                 )) : (

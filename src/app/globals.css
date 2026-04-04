@@ -1942,3 +1942,260 @@ body.dark-mode .chat-input-field {
   margin: var(--space-2);
 
 }
+
+.due-detail-wrapper {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
+
+.due-detail-card {
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 30px;
+  transition: box-shadow 0.2s ease;
+}
+
+body.dark-mode .due-detail-card {
+  background-color: #1e1e1e;
+  border-color: #333;
+}
+
+.due-header {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+body.dark-mode .due-header {
+  border-color: #333;
+}
+
+.due-title {
+  font-size: 1.4em;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 15px;
+  line-height: 1.2;
+}
+
+body.dark-mode .due-title {
+  color: #eee;
+}
+
+.due-info-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.due-info-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.due-info-label {
+  font-size: 0.85em;
+  color: #888;
+  min-width: 120px;
+}
+
+body.dark-mode .due-info-label {
+  color: #aaa;
+}
+
+.due-info-value {
+  font-size: 0.95em;
+  color: #555;
+  font-weight: 500;
+}
+
+body.dark-mode .due-info-value {
+  color: #aaa;
+}
+
+.due-priority-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.85em;
+  background-color: rgba(99, 102, 241, 0.1);
+  color: var(--primary);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.due-description {
+  margin: 20px 0;
+  color: #555;
+  line-height: 1.7;
+}
+
+.due-description p {
+  font-size: 0.95em;
+}
+
+body.dark-mode .due-description,
+body.dark-mode .due-description p {
+  color: #aaa;
+}
+
+.due-upload-section {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+body.dark-mode .due-upload-section {
+  border-color: #333;
+}
+
+.due-upload-title {
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+body.dark-mode .due-upload-title {
+  color: #eee;
+}
+
+.due-upload-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.due-file-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  color: #555;
+  cursor: pointer;
+}
+
+body.dark-mode .due-file-input {
+  border-color: #444;
+  background-color: #222;
+  color: #aaa;
+}
+
+/* Task List Styles */
+.task-list-container {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
+
+.task-list-title {
+  font-size: 1.8em;
+  font-weight: 700;
+  color: #1a1a1a;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+body.dark-mode .task-list-title {
+  color: #eee;
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.task-card {
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 25px;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+body.dark-mode .task-card {
+  background-color: #1e1e1e;
+  border-color: #333;
+}
+
+.task-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
+}
+
+.task-card-header {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+body.dark-mode .task-card-header {
+  border-color: #333;
+}
+
+.task-card-title {
+  font-size: 1.25em;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 15px;
+}
+
+body.dark-mode .task-card-title {
+  color: #eee;
+}
+
+.task-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.task-card-notes {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  font-size: 0.95em;
+}
+
+body.dark-mode .task-card-notes {
+  color: #aaa;
+}
+
+.task-card-actions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.task-card-comments {
+  border-top: 1px dashed #eee;
+  padding-top: 15px;
+  margin-top: 15px;
+}
+
+body.dark-mode .task-card-comments {
+  border-color: #333;
+}
+
+.task-empty {
+  text-align: center;
+  padding: 40px;
+  color: #888;
+  font-size: 1.1em;
+  background-color: #fafafa;
+  border: 1px dashed #ddd;
+  border-radius: 8px;
+}
+
+body.dark-mode .task-empty {
+  background-color: #111;
+  border-color: #333;
+  color: #aaa;
+}

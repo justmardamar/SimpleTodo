@@ -39,7 +39,6 @@ export default function FetchInGroup() {
                         <div className="group-item-actions">
                             <Link href={`/group/${group.groups.id}`} className="btn btn-primary btn-sm">Detail</Link>
                             <Link href={`/group/due/${group.groups.id}`} className="btn btn-secondary btn-sm">Tasks</Link>
-                            <Link href={`/group/chat/${group.groups.id}`} className="btn btn-outline btn-sm">Chat</Link>
                         </div>
                     </li>
                 )) : (

@@ -23,7 +23,7 @@ export default function LoadChat({group_id} : {group_id : string}) {
 
     useEffect(() => {
         setLoadChatGroup()
-        const channel = RealTimeChat()
+        const channel = RealTimeChat(setChat)
 
         return () => {
             supabaseClient.removeChannel(channel)

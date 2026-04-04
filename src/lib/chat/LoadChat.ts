@@ -1,9 +1,8 @@
-import { useState } from "react"
 import { supabaseClient } from "../supabaseClient"
 import { fetchChat } from "@/types/Chat"
+import { Dispatch, SetStateAction } from "react"
 
-export function RealTimeChat() {
-    const [chat, setChat] = useState<fetchChat[]>([])
+export function RealTimeChat(setChat: Dispatch<SetStateAction<fetchChat[]>>) {
     const channel = supabaseClient.channel('group_chat')
 
     channel.on('postgres_changes', {
@@ -25,6 +24,7 @@ export function RealTimeChat() {
         }
 
         setChat((prev) => [...prev, chatWithProfile])
+        
     }).subscribe((status) => {
         if (status !== 'SUBSCRIBED') return
         console.log('Realtime Connection telah tersambung')

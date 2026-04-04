@@ -9,6 +9,10 @@ export default function StartComment({todo_id} : {todo_id:number}) {
 
     const handleSubmit = async (e: any) => {
         e.preventDefault()
+        if (!comment){
+            alert("Comment tidak boleh kosong")
+            return
+        }
         const { error } = await supabaseClient.from("todos_comment")
             .insert({
                 comment: comment,
@@ -21,13 +25,14 @@ export default function StartComment({todo_id} : {todo_id:number}) {
             return
         }
         setComment("")
+        window.location.reload()
     }
 
     return (
         <div>
             <form onSubmit={handleSubmit}>
                 <input type="text" name="comment" placeholder="Comment" className="input-comment" onChange={(e) => setComment(e.target.value)} />
-                <button type='submit' className='button'>Submit</button>
+                <button type='submit' className='btn btn-primary'>Submit</button>
             </form>
         </div>
     )

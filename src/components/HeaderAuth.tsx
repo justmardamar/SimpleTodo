@@ -12,6 +12,7 @@ export default function HeaderAuth() {
       <Link href="/about">About</Link>
       <Link href="/profile">Profile</Link>
       <Link href="/group">Group</Link>
+      <Link href="/chat">Chat</Link>
     </>
   ) : (
     <Link href="/SignIn">Sign In</Link>

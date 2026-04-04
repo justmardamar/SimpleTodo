@@ -16,15 +16,13 @@ export default function DetailDue() {
 
     const fetchTodo = async () => {
         const { data, error } = await supabaseClient.from("todos")
-            .select("*")
+            .select("title,deadline,email_user,notes,priorities(name)")
             .eq("id", id)
             .single()
-
         if (error) {
             console.log(error)
             return
         }
-
         setTodo(data)
     }
 
@@ -38,7 +36,6 @@ export default function DetailDue() {
             return
         }
         if (!session?.user.id || !session?.user.email) {
-            alert("User tidak ditemukan")
             return
         }
         const uploadFile = await UploadFileStorage({id_todos:id,file_name:file})
@@ -57,17 +54,57 @@ export default function DetailDue() {
     }
 
     return (
-        <div className="border rounded-xl p-4 m-2">
-            <h4>Title : {todo?.title}</h4>
-            <h6>Priority : {todo?.priorities?.name}</h6>
-            <p>{todo?.notes}</p>
-            <h6>Due Date : {todo?.deadline}</h6>
-            <h6>Created by : {todo?.email_user}</h6>
-            <form onSubmit={handleUpload}>
-                <input type="file" id="filePicker" className="border rounded-xl p-2 m-2 " onChange={(e) => setFile(e.target.files?.[0] || null)} />
-                <button className="button">Upload</button>
-            </form>
-        </div>
+        <div className="due-detail-wrapper">
+            <div className="due-detail-card">
+                <div className="due-header">
+                    <h1 className="due-title">{todo?.title || 'Memuat...'}</h1>
+                    <div className="due-info-grid">
+                        <div className="due-info-item">
+                            <span className="due-info-label">Prioritas</span>
+                            <span className="due-info-value">
+                                {todo?.priorities?.name ? (
+                                    <span className="due-priority-badge">{todo.priorities?.name}</span>
+                                ) : (
+                                    '-'
+                                )}
+                            </span>
+                        </div>
+                        <div className="due-info-item">
+                            <span className="due-info-label">Tenggat Waktu</span>
+                            <span className="due-info-value">{todo?.deadline || '-'}</span>
+                        </div>
+                        <div className="due-info-item">
+                            <span className="due-info-label">Dibuat Oleh</span>
+                            <span className="due-info-value">{todo?.email_user || '-'}</span>
+                        </div>
+                    </div>
+                </div>
 
+                <div className="due-description">
+                    <span className="due-info-label" style={{ display: 'block', marginBottom: '0.5rem' }}>Catatan Tugas</span>
+                    <p style={{ margin: 0 }}>{todo?.notes || 'Tidak ada catatan.'}</p>
+                </div>
+
+                <div className="due-upload-section">
+                    <h3 className="due-upload-title">Kumpulkan Tugas</h3>
+                    <form onSubmit={handleUpload} className="due-upload-form">
+                        <input 
+                            type="file" 
+                            id="filePicker" 
+                            className="due-file-input" 
+                            accept=".pdf"
+                            onChange={(e) => setFile(e.target.files?.[0] || null)} 
+                        />
+                        <button 
+                            type="submit" 
+                            className="btn btn-primary"
+                            disabled={!file}
+                        >
+                            Unggah File PDF
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
     )
 }

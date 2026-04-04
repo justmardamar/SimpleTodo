@@ -18,15 +18,16 @@ export default function EditComment({commentId}: {commentId: number}) {
             return
         }
         setEdit(false)
+        window.location.reload()
     }
 
     return (
         <div>
-            <button onClick={() => setEdit(!edit)} className="button">Edit</button>
+            <button onClick={() => setEdit(!edit)} className="btn btn-primary">Edit</button>
             {edit && 
             <form onSubmit={handleComment}>
                 <input type="text" value={comment} onChange={(e) => setComment(e.target.value)} className="border rounded-xl p-2"/>
-                <button type="submit" className="button">Submit</button>
+                <button type="submit" className="btn btn-primary">Submit</button>
             </form>
             }
         </div>
